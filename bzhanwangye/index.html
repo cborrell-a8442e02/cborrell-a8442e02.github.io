@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>b站网页版-在线观看与网页端使用指南_弹幕互动_分区导航_收藏追番</title>
+  <meta name="description" content="b站网页版专题导航：汇总网页端在线观看入口、弹幕互动玩法、分区分类与追番收藏指南。适合想通过电脑浏览器访问B站、了解网页版功能与内容推荐的用户，提供清晰的浏览路径与实用参考。">
+  <meta name="keywords" content="b站网页版,在线观看,弹幕互动,网页端使用指南,分区导航,追番收藏">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23fb7299'/%3E%3Ctext x='50' y='68' font-size='48' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'%3Eb%3C/text%3E%3C/svg%3E">
+  <style>
+    /* 全局变量与重置 */
+    :root {
+      --bg-page: #f7f8fc;
+      --bg-card: #ffffff;
+      --bg-soft: #fff5f8;
+      --text-main: #1f2329;
+      --text-secondary: #5c626b;
+      --text-light: #8b929c;
+      --brand: #fb7299;
+      --brand-dark: #e15b7f;
+      --brand-light: #ffecf1;
+      --accent-blue: #5a9cf8;
+      --accent-cyan: #3ec9d6;
+      --border-soft: #eef1f6;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.08);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --max-width: 1200px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page-wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    /* 通用卡片 */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid var(--border-soft);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::before {
+      content: "";
+      width: 6px;
+      height: 26px;
+      background: var(--brand);
+      border-radius: 4px;
+    }
+    /* 导航 */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-soft);
+      margin-bottom: 20px;
+    }
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      background: var(--brand);
+      color: white;
+      font-weight: 800;
+      font-size: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 12px rgba(251, 114, 153, 0.3);
+    }
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .nav-links a {
+      padding: 6px 4px;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover {
+      color: var(--brand);
+      border-bottom-color: var(--brand);
+    }
+    /* Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #fff7fa 0%, #fcf0f5 100%);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 12px rgba(251, 114, 153, 0.06);
+    }
+    .hero-banner::after {
+      content: "b";
+      position: absolute;
+      right: 20px;
+      bottom: -30px;
+      font-size: 200px;
+      font-weight: 900;
+      color: rgba(251, 114, 153, 0.06);
+      line-height: 1;
+      pointer-events: none;
+      font-family: var(--font-sans);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: var(--text-main);
+    }
+    .hero-title span {
+      color: var(--brand);
+    }
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+    .hero-search {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: var(--radius-pill);
+      padding: 6px 6px 6px 24px;
+      box-shadow: var(--shadow-md);
+      max-width: 520px;
+      border: 1px solid rgba(251, 114, 153, 0.2);
+      margin-bottom: 28px;
+    }
+    .hero-search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 0.95rem;
+      padding: 12px 0;
+      background: transparent;
+      color: var(--text-main);
+    }
+    .hero-search input::placeholder {
+      color: var(--text-light);
+    }
+    .hero-search button {
+      background: var(--brand);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .hero-search button:hover {
+      background: var(--brand-dark);
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+    }
+    .hero-tags a {
+      background: white;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--border-soft);
+      transition: all 0.2s;
+    }
+    .hero-tags a:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-light);
+    }
+    /* 卡组网格 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    /* 推荐卡片 */
+    .rec-card {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rec-cover {
+      height: 100px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #ffe4ec, #ffd9e6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--brand-dark);
+      margin-bottom: 4px;
+      padding: 0 12px;
+      text-align: center;
+    }
+    .rec-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+    .rec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      background: var(--bg-page);
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 500;
+    }
+    .tag.brand-tag {
+      background: var(--brand-light);
+      color: var(--brand-dark);
+    }
+    .rec-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .rec-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-soft);
+    }
+    /* 最新更新列表 */
+    .update-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .update-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: white;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      transition: all 0.2s;
+    }
+    .update-item:hover {
+      border-color: var(--brand);
+      box-shadow: var(--shadow-sm);
+    }
+    .update-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .update-name {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+    .update-summary {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+    .update-time {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      background: var(--bg-page);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    /* 分类入口 */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 12px;
+    }
+    .cat-item {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 18px 6px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-soft);
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .cat-item:hover {
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      border-color: var(--brand);
+    }
+    .cat-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    /* 深度解析 */
+    .deep-article {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      margin: 36px 0;
+    }
+    .deep-article h3 {
+      font-size: 1.3rem;
+      margin: 24px 0 12px;
+      font-weight: 700;
+    }
+    .deep-article p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+    /* FAQ手风琴简化 */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: white;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 18px 24px;
+      transition: all 0.2s;
+    }
+    .faq-item:hover {
+      border-color: var(--brand);
+    }
+    .faq-q {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      cursor: default;
+    }
+    .faq-q span {
+      color: var(--brand);
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+    .faq-a {
+      margin-top: 12px;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      border-top: 1px dashed var(--border-soft);
+      padding-top: 14px;
+    }
+    /* 评论 */
+    .comment-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .comment-item {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      border: 1px solid var(--border-soft);
+    }
+    .comment-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .comment-user {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+    .comment-date {
+      font-size: 0.7rem;
+      color: var(--text-light);
+    }
+    .comment-text {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    /* 资讯卡片 */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .news-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 22px;
+      border: 1px solid var(--border-soft);
+      transition: all 0.2s;
+    }
+    .news-card:hover {
+      border-color: var(--brand);
+      box-shadow: var(--shadow-md);
+    }
+    .news-date {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+    .news-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .news-summary {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    /* 页脚 */
+    .site-footer {
+      margin-top: 60px;
+      padding: 40px 0 30px;
+      border-top: 1px solid var(--border-soft);
+      color: var(--text-light);
+      font-size: 0.82rem;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-brand p {
+      margin-top: 10px;
+      max-width: 300px;
+      line-height: 1.7;
+    }
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-links h4 {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .footer-links a {
+      display: block;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--brand);
+    }
+    .footer-copyright {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-soft);
+      text-align: center;
+      font-size: 0.78rem;
+    }
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .cat-grid { grid-template-columns: repeat(4, 1fr); }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 2.2rem; }
+    }
+    @media (max-width: 768px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .comment-list { grid-template-columns: 1fr; }
+      .hero-banner { padding: 32px 22px; }
+      .hero-title { font-size: 1.9rem; }
+      .deep-article { padding: 24px 20px; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .news-grid { grid-template-columns: 1fr; }
+      .hero-search { flex-direction: column; padding: 16px; background: transparent; box-shadow: none; border: none; }
+      .hero-search input { background: white; border-radius: var(--radius-pill); padding: 14px 20px; width: 100%; box-shadow: var(--shadow-sm); border: 1px solid var(--border-soft); }
+      .hero-search button { width: 100%; margin-top: 10px; }
+      .section-title { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+      <div class="logo-badge">
+        <div class="logo-icon">b</div>
+        <span class="logo-text">b站网页版 · 专题站</span>
+      </div>
+      <div class="nav-links">
+        <a href="/#热门推荐">热门推荐</a>
+        <a href="/#最新更新">最新更新</a>
+        <a href="/#深度解析">深度解析</a>
+        <a href="/#分类入口">分类入口</a>
+        <a href="/#常见问题">常见问题</a>
+        <a href="/#用户评论">用户评论</a>
+        <a href="/#相关资讯">相关资讯</a>
+      </div>
+    </nav>
+
+    <!-- 首屏 Banner -->
+    <header class="hero-banner" id="banner">
+      <div class="hero-content">
+        <h1 class="hero-title">b站网页版 <span>在线观看与互动指南</span></h1>
+        <p class="hero-desc">聚合网页端入口、分区导航与弹幕玩法，适合想用电脑浏览器刷B站、追番、看直播的你。<br>不用下载客户端，打开浏览器就能沉浸弹幕世界，收藏、投币、分享一应俱全。</p>
+        <div class="hero-search">
+          <input type="text" placeholder="搜索你感兴趣的UP主、番剧或分区…" aria-label="搜索b站网页版内容">
+          <button>搜索</button>
+        </div>
+        <div class="hero-tags">
+          <a href="/#热门推荐">热门动画</a>
+          <a href="/#最新更新">今日更新</a>
+          <a href="/#分类入口">游戏分区</a>
+          <a href="/#分类入口">知识区</a>
+          <a href="/#分类入口">生活娱乐</a>
+          <a href="/#深度解析">弹幕文化</a>
+          <a href="/#常见问题">网页版入口</a>
+          <a href="/#用户评论">社区讨论</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 内容简介 -->
+    <section id="intro" style="margin-bottom: 40px;">
+      <h2 class="section-title">b站网页版 · 内容专题介绍</h2>
+      <div class="card" style="padding: 32px 36px;">
+        <p style="color: var(--text-secondary); line-height: 1.85; font-size: 0.98rem; margin-bottom: 16px;">
+          b站网页版是哔哩哔哩面向电脑浏览器用户的核心访问方式，无需安装客户端即可体验完整的视频观看、弹幕互动、动态关注与直播功能。相比移动端，网页版在大屏浏览、多窗口操作、内容检索效率上有着天然优势，尤其适合需要一边看视频一边查资料、写笔记或进行多任务处理的场景。本专题围绕b站网页版的使用体验、内容分区、热门推荐与常见疑问展开，帮助新老用户更高效地找到感兴趣的内容。
+        </p>
+        <p style="color: var(--text-secondary); line-height: 1.85; font-size: 0.98rem; margin-bottom: 16px;">
+          页面汇总了网页端热门动画、游戏实况、知识科普、生活记录等各分区的代表性内容，并提供了清晰的最新更新列表与分类入口，方便你快速筛选。如果你刚开始使用b站网页版，不妨从“深度解析”和“体验指南”模块入手，了解弹幕设置、画质选择、收藏夹管理等实用技巧；如果你是老用户，也可以从“用户评论”和“相关资讯”中获取近期社区热点与内容趋势。
+        </p>
+        <p style="color: var(--text-secondary); line-height: 1.85; font-size: 0.98rem;">
+          无论你是想追新番、看游戏攻略、学知识，还是单纯想刷弹幕放松，b站网页版都能提供丰富的选择。本页面会持续整理网页端值得关注的内容与使用心得，建议收藏本页，随时回来查看更新。
+        </p>
+      </div>
+    </section>
+
+    <!-- 热门推荐 -->
+    <section id="热门推荐">
+      <h2 class="section-title">热门内容推荐</h2>
+      <div class="grid-3">
+        <div class="card rec-card">
+          <div class="rec-cover">新番速递</div>
+          <div class="rec-title">《时光代理人》第三季</div>
+          <div class="rec-tags"><span class="tag brand-tag">动画</span><span class="tag">悬疑</span><span class="tag">催泪</span></div>
+          <div class="rec-desc">网页版追番体验流畅，弹幕氛围拉满。本季剧情进入新时间线，角色羁绊再度升级，适合喜欢烧脑与情感并存的观众。</div>
+          <div class="rec-meta"><span>评分 9.6</span><span>更新至第6话</span></div>
+        </div>
+        <div class="card rec-card">
+          <div class="rec-cover">游戏实况</div>
+          <div class="rec-title">《黑神话：悟空》全收集实况</div>
+          <div class="rec-tags"><span class="tag brand-tag">游戏</span><span class="tag">攻略</span><span class="tag">硬核</span></div>
+          <div class="rec-desc">UP主“老戴”的网页版实况合集，弹幕互动密集。包含隐藏boss打法与装备路线，适合一边看一边对照操作。</div>
+          <div class="rec-meta"><span>热度 287w</span><span>更新至第12P</span></div>
+        </div>
+        <div class="card rec-card">
+          <div class="rec-cover">知识科普</div>
+          <div class="rec-title">罗翔说刑法：网页版特别篇</div>
+          <div class="rec-tags"><span class="tag brand-tag">知识</span><span class="tag">法律</span><span class="tag">轻松</span></div>
+          <div class="rec-desc">用网页版大屏看罗老师讲课，配合弹幕“法外狂徒”梗，学习氛围轻松。本期聚焦网络行为边界，适合下饭观看。</div>
+          <div class="rec-meta"><span>播放 520w</span><span>全1P</span></div>
+        </div>
+        <div class="card rec-card">
+          <div class="rec-cover">生活记录</div>
+          <div class="rec-title">我的一日三餐·网页版弹幕版</div>
+          <div class="rec-tags"><span class="tag brand-tag">生活</span><span class="tag">治愈</span><span class="tag">美食</span></div>
+          <div class="rec-desc">UP主“绵羊料理”的日常vlog，网页端观看时弹幕会飘过各种食谱建议，互动感很强，适合吃饭时点开。</div>
+          <div class="rec-meta"><span>评分 9.2</span><span>昨日更新</span></div>
+        </div>
+        <div class="card rec-card">
+          <div class="rec-cover">音乐现场</div>
+          <div class="rec-title">BML 2026 网页版回放</div>
+          <div class="rec-tags"><span class="tag brand-tag">音乐</span><span class="tag">演唱会</span><span class="tag">高燃</span></div>
+          <div class="rec-desc">B站大型线下音乐节全程回放，网页版支持蓝光画质与弹幕滚动。适合想重温现场气氛或补番的歌迷。</div>
+          <div class="rec-meta"><span>播放 190w</span><span>全程3小时</span></div>
+        </div>
+        <div class="card rec-card">
+          <div class="rec-cover">科技数码</div>
+          <div class="rec-title">网页版也能玩转AI工具？</div>
+          <div class="rec-tags"><span class="tag brand-tag">科技</span><span class="tag">AI</span><span class="tag">效率</span></div>
+          <div class="rec-desc">极客UP主演示如何在b站网页版配合插件提升学习效率，包括弹幕过滤、倍速笔记等，适合学生党与办公族。</div>
+          <div class="rec-meta"><span>评分 9.0</span><span>更新至第3集</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 最新更新 -->
+    <section id="最新更新" style="margin-top: 48px;">
+      <h2 class="section-title">最新更新 · 热播动态</h2>
+      <div class="update-list">
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">《灵笼》第二季 · 第9集</span>
+            <span class="update-summary">网页版已上线，弹幕突破10万条，剧情进入白热化</span>
+          </div>
+          <span class="update-time">今天 14:20</span>
+        </div>
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">老番茄《毕业旅行》</span>
+            <span class="update-summary">游戏实况新系列，网页端支持章节跳转</span>
+          </div>
+          <span class="update-time">今天 12:05</span>
+        </div>
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">“网页版弹幕设置指南”</span>
+            <span class="update-summary">知识区热门教程更新，教你屏蔽关键词与调整透明度</span>
+          </div>
+          <span class="update-time">今天 10:40</span>
+        </div>
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">《中国奇谭2》· 第4集</span>
+            <span class="update-summary">网页版画质默认1080P，需手动切换4K</span>
+          </div>
+          <span class="update-time">昨天 21:15</span>
+        </div>
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">英雄联盟S16 决赛回放</span>
+            <span class="update-summary">赛事专区已更新，支持多视角切换与实时数据</span>
+          </div>
+          <span class="update-time">昨天 18:30</span>
+        </div>
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">“绵羊料理”新视频</span>
+            <span class="update-summary">网页端投币特效正常，评论区已开放</span>
+          </div>
+          <span class="update-time">昨天 16:12</span>
+        </div>
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">《三体》动画版 第11集</span>
+            <span class="update-summary">网页版弹幕氛围热烈，建议关闭底部弹幕防遮挡</span>
+          </div>
+          <span class="update-time">11月5日 20:00</span>
+        </div>
+        <div class="update-item">
+          <div class="update-left">
+            <span class="update-name">“老师好我叫何同学”新作</span>
+            <span class="update-summary">网页端首发，探讨网页版交互未来</span>
+          </div>
+          <span class="update-time">11月5日 15:45</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 分类入口 -->
+    <section id="分类入口" style="margin-top: 48px;">
+      <h2 class="section-title">内容分类入口</h2>
+      <div class="cat-grid">
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">🎬</span>动画</a>
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">🎮</span>游戏</a>
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">📚</span>知识</a>
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">🎵</span>音乐</a>
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">🍜</span>生活</a>
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">💻</span>科技</a>
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">⚽</span>体育</a>
+        <a href="/#热门推荐" class="cat-item"><span class="cat-icon">📺</span>影视</a>
+      </div>
+    </section>
+
+    <!-- 深度解析 -->
+    <section id="深度解析" class="deep-article">
+      <h2 class="section-title" style="margin-bottom: 10px;">深度解析：b站网页版的内容生态与使用体验</h2>
+      <p>对于很多用户来说，b站网页版是接触B站内容的第一入口。相比移动端，网页版在信息密度、多任务处理和内容发现效率上有着不可替代的优势。打开浏览器，收藏栏里的b站网页版链接几乎成了每日必点——无论是工作间隙刷一会热门，还是晚上认真追番，大屏幕带来的沉浸感是小屏难以复制的。这种使用习惯也反过来影响了内容消费的节奏：网页版用户更倾向于观看中长视频、参与深度讨论，以及利用多标签页进行内容对比和检索。</p>
+      <h3>从分区到推荐：内容发现机制的差异</h3>
+      <p>b站网页版的分区导航一直保留着经典的门户感。动画、游戏、知识、生活、音乐、科技、影视、体育等一级分区在顶部清晰排列，鼠标悬停即可展开二级分类。这种设计对于目标明确的用户非常友好——想看某个UP主的新视频，直接进入分区翻找即可。而首页推荐流则更依赖算法，根据你的观看历史和关注列表动态调整。网页版右侧的“热门”榜单和“每周必看”是很多用户发现优质内容的快捷入口，尤其是“每周必看”的编辑精选，质量普遍较高。弹幕作为B站的核心文化，在网页端有着更丰富的设置选项：你可以调整弹幕透明度、显示区域、屏蔽词，甚至开启“智能防挡弹幕”，让弹幕不遮挡人脸。这些细节设置让观看体验更加个性化。</p>
+      <h3>网页端观看与互动的小技巧</h3>
+      <p>很多新用户刚使用b站网页版时，会忽略一些实用功能。例如，播放器右下角的“画质”选项可以手动切换到1080P高码率或4K，前提是网络和视频源支持。快捷键方面，空格暂停、方向键快进快退、F键全屏、D键开关弹幕，熟练后可以大幅提升操作效率。收藏夹管理在网页端也更为直观，你可以创建多个收藏夹并设置隐私状态，方便整理学习资料或娱乐清单。另外，网页版的“稍后再看”功能适合临时保存感兴趣的视频，避免在推荐流中迷失。</p>
+      <h3>适合谁在网页端刷B站？</h3>
+      <p>从使用场景来看，b站网页版特别适合以下几类人群：一是需要边看视频边做笔记的学生或职场人，网页版可以轻松分屏或切换窗口；二是喜欢大屏沉浸体验的追番党，配合弹幕文化，氛围感十足；三是关注科技、知识类长视频的用户，网页端的信息展示更完整，评论区也更容易展开深度讨论。当然，如果你习惯碎片化刷短视频，移动端可能更顺手，但网页版在内容深度和操作精度上的优势依然明显。总的来说，b站网页版并不是移动端的简单替代，而是一个面向深度内容消费和高效信息获取的独立场景。理解它的特点，能帮助你更好地利用这个平台。</p>
+    </section>
+
+    <!-- 体验指南 -->
+    <section id="体验指南" style="margin-bottom: 30px;">
+      <h2 class="section-title">网页版体验指南</h2>
+      <div class="grid-2">
+        <div class="card" style="padding: 26px;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 14px;">🖥️ 大屏浏览更舒适</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75;">网页版充分利用电脑屏幕宽度，视频播放区域更大，弹幕滚动更流畅。右侧推荐列表和评论区可以同时展开，无需反复滑动。</p>
+        </div>
+        <div class="card" style="padding: 26px;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 14px;">🔍 筛选与搜索效率高</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75;">顶部分区导航与搜索框配合使用，可以快速定位到UP主、番剧或专栏。支持按播放量、更新时间排序，找内容不迷路。</p>
+        </div>
+        <div class="card" style="padding: 26px;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 14px;">📱 移动端友好适配</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75;">虽然主打电脑端，但b站网页版在平板和手机浏览器上也能正常访问，布局会自动调整，核心观看功能不受影响。</p>
+        </div>
+        <div class="card" style="padding: 26px;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 14px;">⭐ 收藏与追更同步</h3>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75;">登录账号后，网页端的收藏、追番、历史记录与移动端实时同步。在电脑上收藏的教程，手机上也能接着看。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="常见问题" style="margin-top: 40px;">
+      <h2 class="section-title">常见问题</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">b站网页版需要下载客户端吗？ <span>＋</span></div>
+          <div class="faq-a">不需要。b站网页版是直接通过浏览器访问的版本，输入网址即可使用，无需安装任何软件。它保留了核心的视频观看、弹幕、评论和动态功能，适合不想额外安装客户端的用户。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">网页版和手机App的内容同步吗？ <span>＋</span></div>
+          <div class="faq-a">登录同一账号后，收藏夹、追番列表、观看历史、稍后再看都会自动同步。你在网页版收藏的视频，打开手机App也能在收藏夹里找到，非常方便跨设备使用。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">网页版如何调整弹幕设置？ <span>＋</span></div>
+          <div class="faq-a">在播放器下方找到弹幕设置图标（通常是一个“弹”字按钮），点击后可以调整弹幕透明度、显示区域、速度以及屏蔽词。建议打开“智能防挡弹幕”避免遮挡人脸，也可以按关键词屏蔽不喜欢的弹幕。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">网页版能看直播和番剧吗？ <span>＋</span></div>
+          <div class="faq-a">可以。b站网页版支持直播观看、弹幕互动和礼物打赏，也支持正版番剧的在线播放。部分番剧可能需要大会员或付费观看，网页端会明确提示，与移动端规则一致。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">为什么网页版有时加载慢？ <span>＋</span></div>
+          <div class="faq-a">加载速度与网络环境、浏览器缓存以及视频源有关。可以尝试清理浏览器缓存、关闭不用的扩展插件，或者切换网络。热门视频高峰期可能出现短暂卡顿，刷新页面或稍等片刻即可。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">网页版适合哪些人使用？ <span>＋</span></div>
+          <div class="faq-a">适合需要大屏观看、多任务处理、边看边记笔记的用户，也适合喜欢使用键盘快捷键操作的高效人群。对于内容深度较高的知识区、科技区视频，网页版的信息呈现更有优势。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 用户评论 -->
+    <section id="用户评论" style="margin-top: 48px;">
+      <h2 class="section-title">用户评论 · 社区短评</h2>
+      <div class="comment-list">
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@夜航星</span><span class="comment-date">2026-11-06</span></div>
+          <div class="comment-text">网页版追番真的舒服，弹幕可以设置透明度，不会挡住字幕。最近在补《灵笼》，大屏看细节多很多。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@小何同学</span><span class="comment-date">2026-11-05</span></div>
+          <div class="comment-text">工作原因经常用网页版，快捷键很实用。希望收藏夹管理能再优化一下，现在文件夹层级有点不够用。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@海边的卡夫卡</span><span class="comment-date">2026-11-04</span></div>
+          <div class="comment-text">手机端和网页版来回切，进度同步很稳。不过网页版直播有时候弹幕会卡，不知道是不是浏览器问题。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@脆脆鲨</span><span class="comment-date">2026-11-03</span></div>
+          <div class="comment-text">用网页版学习罗翔老师刑法，旁边开着笔记软件，效率很高。弹幕里的梗也好好笑，学习氛围轻松。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@数码小白</span><span class="comment-date">2026-11-02</span></div>
+          <div class="comment-text">网页版画质选项挺全的，4K需要手动切，默认是1080P。希望以后能记住我的画质偏好。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@追番人</span><span class="comment-date">2026-11-01</span></div>
+          <div class="comment-text">每周必看榜单是我发现好内容的主要渠道，编辑品味不错。网页版首页推荐流有时候重复，可以改进。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@游戏老油条</span><span class="comment-date">2026-10-31</span></div>
+          <div class="comment-text">看游戏实况用网页版，可以一边看一边查攻略，比手机方便多了。不过弹幕多了会遮挡血条，建议开防挡。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@音乐盒</span><span class="comment-date">2026-10-30</span></div>
+          <div class="comment-text">BML回放用网页版看很过瘾，弹幕一起刷“爷青回”。就是希望网页端能增加一个弹幕关键词过滤的快捷入口。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@平平无奇</span><span class="comment-date">2026-10-29</span></div>
+          <div class="comment-text">网页版整体不错，但偶尔会碰到视频加载失败，刷新一下就好。希望稳定性继续提升。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@知识区常驻</span><span class="comment-date">2026-10-28</span></div>
+          <div class="comment-text">网页版看知识区视频可以开倍速，配合分屏笔记，学习效率拉满。推荐给学生党。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@不吃香菜</span><span class="comment-date">2026-10-27</span></div>
+          <div class="comment-text">用网页版主要是为了看直播，界面比手机端清爽，弹幕也不挡脸。希望增加夜间模式自动切换。</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-head"><span class="comment-user">@大橘为重</span><span class="comment-date">2026-10-26</span></div>
+          <div class="comment-text">b站网页版收藏夹是整理学习资料的神器，分类管理很方便。希望搜索能支持更精确的筛选条件。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 相关资讯 -->
+    <section id="相关资讯" style="margin-top: 48px;">
+      <h2 class="section-title">相关资讯</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-date">2026-11-07</div>
+          <div class="news-title">b站网页版新增“智能防挡弹幕”开关</div>
+          <div class="news-summary">近期更新中，网页版播放器设置里新增了智能防挡弹幕选项，系统会自动调整弹幕位置避免遮挡人物面部，提升观看体验。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026-11-06</div>
+          <div class="news-title">网页端“每周必看”第88期上线</div>
+          <div class="news-summary">本期精选了动画、知识、生活等分区的优质内容，包括《时光代理人》解析和何同学的新作，适合周末补番。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026-11-05</div>
+          <div class="news-title">网页版直播分区优化，分类更清晰</div>
+          <div class="news-summary">直播区页面结构调整，游戏、娱乐、知识等分类入口更明显，同时增加了热门直播间的预览卡片，方便快速进入。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026-11-04</div>
+          <div class="news-title">网页端收藏夹支持批量移动</div>
+          <div class="news-summary">现在可以在收藏夹管理界面多选视频并批量移动到其他收藏夹，整理效率提升，适合收藏控用户。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026-11-03</div>
+          <div class="news-title">b站网页版上线4K画质测试</div>
+          <div class="news-summary">部分影视和番剧内容开始支持4K分辨率，需在播放器手动切换，对网络带宽有一定要求，画质提升明显。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026-11-01</div>
+          <div class="news-title">网页端评论区新增“按时间排序”</div>
+          <div class="news-summary">评论区现在可以选择按热度或时间排序，方便查看最新讨论。该功能已在网页版全量上线，移动端同步更新。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo-badge" style="margin-bottom: 6px;">
+            <div class="logo-icon" style="width: 36px; height: 36px; font-size: 18px; border-radius: 10px;">b</div>
+            <span class="logo-text" style="font-size: 1rem;">b站网页版专题站</span>
+          </div>
+          <p>专注于整理b站网页版的使用技巧、内容推荐与社区动态，帮助用户更高效地探索网页端内容生态。</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4>内容导航</h4>
+            <a href="/#热门推荐">热门推荐</a>
+            <a href="/#最新更新">最新更新</a>
+            <a href="/#分类入口">分类入口</a>
+            <a href="/#深度解析">深度解析</a>
+          </div>
+          <div>
+            <h4>帮助与社区</h4>
+            <a href="/#常见问题">常见问题</a>
+            <a href="/#用户评论">用户评论</a>
+            <a href="/#相关资讯">相关资讯</a>
+            <a href="/#体验指南">体验指南</a>
+          </div>
+          <div>
+            <h4>友情链接</h4>
+            <a href="/#banner">站点首页</a>
+            <a href="/#intro">专题介绍</a>
+            <a href="/#深度解析">编辑精选</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>© 2026 b站网页版专题站 · 内容仅供参考 · 与哔哩哔哩官方无直接隶属关系</p>
+        <p style="margin-top: 6px;">页面内容基于公开信息整理，如有更新请以官方为准。友情链接仅作展示占位。</p>
+      </div>
+    </footer>
+  </div>
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
